@@ -123,6 +123,10 @@ aside {
   section.user_info {
     margin-top: 20px;
   }
+  section.button {
+    display: block;
+    margin-top: 5px;
+  }
   section {
     padding: 10px 0;
     margin-top: 20px;
@@ -205,5 +209,50 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+  .name {
+    display: block;
+    margin-left: 0px;
+  }
+  .device {
+    display: block;
+    margin-left: 0px;
+  }
+}
+
+/* devices */
+
+.devices {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .name {
+    display: block;
+    margin-left: 0px;
+  }
+  .status {
+    display: block;
+    margin-left: 0px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
   }
 }

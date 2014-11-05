@@ -7,5 +7,20 @@
         <%= full_name @user %>
       </h1>
     </section>
+    <section class="check_button">
+      <% if current_user? @user %>
+        <span class="button"> <%= link_to "Return All", "#", class: "btn btn-lg btn-primary" %> </span>
+        <span class="button"> <%= link_to "Devices", devices_path, class: "btn btn-lg btn-primary" %> </span>
+      <% end %>
+    </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.devices.any? %>
+      <h3>Devices Checked Out (<%= @user.devices.count %>)</h3>
+      <ol class="devices">
+        <%= render @devices %>
+      </ol>
+      <%= will_paginate @devices %>
+    <% end %>
+  </div>
 </div>

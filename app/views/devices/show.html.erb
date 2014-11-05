@@ -1,0 +1,9 @@
+<% provide(:title, @device.name) %>
+<h1><% @device.name %> </h1>
+<span class="devices">
+  <span class="name">Name: <%= @device.name %></span>
+  <span class="status">Status: <%= @device.status %></span>
+  <% if @device.user_id? %>
+    <span class="user">User: <%= link_to @device.user.full_name, @device.user %></span>
+  <% end %>
+</span>

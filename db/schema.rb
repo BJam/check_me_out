@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102064109) do
+ActiveRecord::Schema.define(version: 20141104061630) do
+
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "devices", ["user_id", "status"], name: "index_devices_on_user_id_and_status"
+  add_index "devices", ["user_id"], name: "index_devices_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name"

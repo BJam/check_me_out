@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :devices
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -21,6 +22,10 @@ class User < ActiveRecord::Base
   # Returns a random token.
   def User.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def full_name
+    [self.first_name, self.last_name].join(" ")
   end
 
   # Remembers a user in the database for use in persistent sessions.

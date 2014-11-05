@@ -1,0 +1,21 @@
+<li id="device-<%= device.id %>">
+  <span class="name">Name: <%= device.name %></span>
+  <span class="status">Status: <%= device.status %></span>
+  <% if device.user_id? %>
+    <% if device.user_id == current_user.id %>
+      <%= form_for device, url: device_path(device), html: { method: :put } do -%>
+        <%= hidden_field_tag :status, "Available" -%>
+        <%= hidden_field_tag :user_id, nil -%>
+        <%= submit_tag 'RETURN' -%>
+      <%- end -%>
+    <% else %>
+      <span class="user">User: <%= link_to device.user.full_name, device.user %></span>
+    <% end %>
+  <% else %>
+      <%= form_for device, url: device_path(device), html: { method: :put } do -%>
+        <%= hidden_field_tag :status, "Checked Out" -%>
+        <%= hidden_field_tag :user_id, current_user.id -%>
+        <%= submit_tag 'Check Out' -%>
+      <%- end -%>
+  <% end %>
+</li>
