@@ -10,6 +10,20 @@ class DevicesController < ApplicationController
     @device = Device.find(params[:id])
   end
 
+  def new
+    @device = Device.new
+  end
+
+  def create
+    @device = Device.new(device_params)
+    if @device.save
+      flash[:info] = "Device Added"
+      redirect_to @device
+    else
+      render 'new'
+    end
+  end
+
   def edit
     @device = Device.find(params[:id])
   end
@@ -20,12 +34,11 @@ class DevicesController < ApplicationController
       flash[:success] = "Device updated"
       redirect_to :back
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Devive not updated - Something went wrong"
     end
   end
 
-  def create
-  end
+
 
   def destroy
   end
@@ -33,6 +46,11 @@ class DevicesController < ApplicationController
   private
     def device_params
       params.permit(:name, :status, :user_id)
+    end
+
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 
 end

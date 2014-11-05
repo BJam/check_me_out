@@ -1,6 +1,10 @@
 <% provide(:title, 'Devices') %>
 <h1>Devices</h1>
 
+<% if current_user.admin? %>
+  <%= link_to "Add Device", new_device_path, class: "btn btn-lg btn-primary" %>
+<% end %>
+
 <%= will_paginate %>
 
 <ul class="devices">
